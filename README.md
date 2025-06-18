@@ -132,7 +132,7 @@ Contribuições são o que tornam a comunidade de código aberto um lugar incrí
 
 ## 📄 Licença
 
-Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
+Distribuído sob a licença MIT. Veja [LICENSE](https://github.com/kaudotdev/library-api/blob/main/LICENSE) para mais informações.
 
 ---
 
