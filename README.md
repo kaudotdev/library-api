@@ -74,23 +74,35 @@ mvn spring-boot:run
 
 > A API estará disponível em `http://localhost:8080`.
 
+Ao iniciar, um usuario de admin é criado no banco de dados com a role de "ADMIN", com nome:admin e senha:admin
+
 ---
 
 ## ⚡ Endpoints da API
 
 Abaixo estão os endpoints disponíveis para interagir com a API:
 
-| Método   | Endpoint                            | Descrição                |
-| :------- | :---------------------------------- | :----------------------- |
-| `GET`    | `/api/livros`                       | Listar livros (paginado) |
-| `GET`    | `/api/livros/{id}`                  | Buscar livro por ID      |
-| `POST`   | `/api/livros`                       | Cadastrar livro          |
-| `PUT`    | `/api/livros/{id}`                  | Atualizar livro          |
-| `DELETE` | `/api/livros/{id}`                  | Remover livro            |
-| `GET`    | `/api/livros/categoria/{categoria}` | Buscar por categoria     |
-| `POST`   | `/api/emprestimos`                  | Registrar empréstimo     |
-| `PUT`    | `/api/emprestimos/{id}/devolucao`   | Registrar devolução      |
-| `GET`    | `/api/usuarios/{id}/emprestimos`    | Histórico de empréstimos |
+| Método   | Endpoint                                 | Descrição                              | Permissão                |
+|----------|------------------------------------------|----------------------------------------|--------------------------|
+| POST     | `/login`                                 | Login e obtenção de token JWT          | Público                  |
+| GET      | `/api/books`                             | Listar livros                         | Público                  |
+| GET      | `/api/books/{id}`                        | Buscar livro por ID                    | Público                  |
+| GET      | `/api/books/category/{category}`         | Buscar livros por categoria            | Público                  |
+| POST     | `/api/books`                             | Cadastrar livro                        | ADMIN                    |
+| PUT      | `/api/books/{id}`                        | Atualizar livro                        | ADMIN                    |
+| DELETE   | `/api/books/{id}`                        | Remover livro                          | ADMIN                    |
+| GET      | `/api/users`                             | Listar usuários                        | ADMIN                    |
+| GET      | `/api/users/{id}`                        | Buscar usuário por ID                   | ADMIN                    |
+| POST     | `/api/users`                             | Cadastrar usuário                      | Público                  |
+| GET      | `/api/loans`                             | Listar todos os empréstimos            | ADMIN                    |
+| POST     | `/api/loans`                             | Registrar empréstimo                   | Autenticado              |
+| POST     | `/api/loans/return/{loanId}`             | Registrar devolução                    | Autenticado              |
+| GET      | `/api/loans/user/{userId}`               | Histórico de empréstimos por usuário   | Autenticado              |
+
+Observações:
+- "ADMIN" = requer autoridade ADMIN.
+- "Autenticado" = qualquer usuário autenticado.
+- "Público" = não requer autenticação.
 
 ---
 
